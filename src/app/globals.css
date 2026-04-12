@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --industrial-amber: #f59e0b;
+  --industrial-void: #0a0c0f;
+}
+
+body {
+  @apply bg-industrial-void text-zinc-200 antialiased;
+}
+
+@layer utilities {
+  .text-glow-amber {
+    text-shadow: 0 0 24px rgba(245, 158, 11, 0.35);
+  }
+}
