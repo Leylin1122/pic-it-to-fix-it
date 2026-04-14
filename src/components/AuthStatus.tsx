@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Small status card shown in the header.
+ *
+ * Displays the current auth state and a sign-out button when signed in.
+ */
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";

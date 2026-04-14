@@ -1,9 +1,17 @@
 "use client";
 
+/**
+ * Camera capture UI and AI diagnosis workflow.
+ *
+ * This component handles live camera capture, local image preview,
+ * schematic conversion, and calls the /api/diagnose endpoint.
+ */
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type ChangeEvent } from "react";
 
-import { imageDataUrlToSchematicDataUrl } from "@/lib/schematicPipeline";import { DiagnosisChat } from "@/components/DiagnosisChat";import type { DiagnosisPayload } from "@/types/diagnosis";
+import { imageDataUrlToSchematicDataUrl } from "@/lib/schematicPipeline";
+import { DiagnosisChat } from "@/components/DiagnosisChat";
+import type { DiagnosisPayload } from "@/types/diagnosis";
 
 type CameraStatus = "idle" | "requesting" | "live" | "error";
 type ViewTab = "photo" | "blueprint" | "repair";

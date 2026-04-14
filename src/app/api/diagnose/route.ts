@@ -1,3 +1,9 @@
+/**
+ * Server route for AI diagnosis image processing.
+ *
+ * This API accepts a base64 image payload, sends it to Gemini, and
+ * returns a strict diagnosis JSON structure.
+ */
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
@@ -29,12 +35,18 @@ Rules:
 - If unsure, give best-effort guesses and say so in visible_damage.
 - Use repair_focus as the most important first action to take.`;
 
+/**
+ * Normalize data URLs and fall back to raw base64 payloads.
+ */
 function stripDataUrlPrefix(dataUrl: string): { mime: string; base64: string } | null {
   const m = /^data:([^;]+);base64,(.+)$/i.exec(dataUrl.trim());
   if (!m) return null;
   return { mime: m[1], base64: m[2] };
 }
 
+/**
+ * Parse raw text from Gemini and return the first valid JSON payload.
+ */
 function tryParseJson(text: string): DiagnosisPayload | null {
   const trimmed = text.trim();
   const start = trimmed.indexOf("{");

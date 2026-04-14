@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * Client-side wrapper to require a signed-in Firebase user.
+ *
+ * If the user is not authenticated, this component renders a login prompt
+ * instead of the protected child content.
+ */
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";

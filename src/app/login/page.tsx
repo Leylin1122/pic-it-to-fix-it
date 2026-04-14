@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Login page for Firebase authentication.
+ *
+ * Supports Google sign-in as well as optional email/password auth.
+ */
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -43,6 +48,9 @@ export default function LoginPage() {
     router.push("/camera");
   };
 
+  /**
+   * Sign in the user with Google via Firebase Authentication.
+   */
   const handleGoogleSignIn = async () => {
     if (!firebaseConfigValid) {
       setError(firebaseConfigError?.message ?? "Firebase is not configured.");

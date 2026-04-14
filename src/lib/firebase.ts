@@ -1,3 +1,10 @@
+/**
+ * Firebase client-side initialization helper.
+ *
+ * This file only initializes the browser Firebase SDK using public
+ * config values prefixed with NEXT_PUBLIC_. It is safe to import from
+ * client components and does not include any admin credentials.
+ */
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import type { FirebaseApp } from "firebase/app";
@@ -27,6 +34,9 @@ export const firebaseConfigError = missingKeys.length
 let cachedApp: FirebaseApp | null = null;
 let cachedAuth: Auth | null = null;
 
+/**
+ * Initialize or return the existing Firebase app instance.
+ */
 function initializeFirebaseApp(): FirebaseApp {
   if (!firebaseConfigValid) {
     throw firebaseConfigError;
